@@ -1,11 +1,7 @@
-<div class="wrap-form">
-  <div class="form">
-    <form method="POST" action="/user_login/">
-      <div class="for-input">
-        <input type="password" name="ext_login" placeholder="Enter your secret word" />
-      </div>
-
-      <button type="submit" class="btn">GO!</button>
-    </form>
-  </div>
+<div class="container">
+    <div ng-view=""></div>
 </div>
+
+<script src="{$THEME}/js/vendor.955ed2ef.js"></script>
+<script src="{$THEME}/js/route.login.js"></script>
+<script src="{$THEME}/js/scripts.942a474f.js"></script>
