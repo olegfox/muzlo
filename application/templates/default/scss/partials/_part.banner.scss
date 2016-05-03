@@ -1,0 +1,32 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Banner functionality
+// ---------------------------------------------------------------------------------------------------------------------
+
+.banner {
+  background: $color-grey-lighten;
+  padding: 0 9999px;
+  margin: 0 -9999px 50px -9999px;
+  .banner-inside {
+    background: $color-white;
+    padding: 25px;
+    text-align: center;
+    @include overflow;
+  }
+  .banner-item {
+    max-width: 100%;
+    & > * {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  &.banner-2-items {
+    .banner-item {
+      float: right;
+      &:first-child {
+        float: left;
+      }
+      max-width: 49%;
+    }
+  }
+}

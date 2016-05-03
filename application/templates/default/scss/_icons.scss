@@ -1,0 +1,104 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Styles for small elements
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Make sprite for icons
+$icon-layout: smart;
+@import "icon/*.png";
+//@include all-icon-sprites;
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  @include no-font;
+  @include no-transition;
+  @include ie7-inline-block;
+}
+
+// Custom icons
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Close
+.icon-close {
+  @include add-sprite(close);
+}
+
+// Arrows
+.icon-arrow-right {
+  @include add-sprite(arrow_g_r);
+}
+.icon-arrow-left {
+  @include add-sprite(arrow_g_l);
+}
+.icon-arrow-down {
+  @include add-sprite(arrow_g_d);
+}
+
+// Approve & decline
+.icon-approve {
+  @include add-sprite(approve);
+}
+.icon-decline {
+  @include add-sprite(decline);
+}
+
+// Like & comments
+.icon-like {
+  @include add-sprite(like);
+}
+.icon-comments {
+  @include add-sprite(comments);
+}
+
+// Other icons
+.icon-whisper {
+  @include add-sprite(whisper);
+}
+
+.icon-upload {
+  @include add-sprite(upload);
+}
+
+.icon-search {
+  @include add-sprite(search);
+}
+
+.icon-refresh {
+  @include add-sprite(refresh);
+}
+
+.icon-not-approved {
+  @include add-sprite(not_approved);
+}
+
+.icon-plus {
+  @include add-sprite(plus);
+}
+
+.icon-city {
+  @include add-sprite(city);
+}
+
+.icon-check {
+  @include add-sprite(check_r);
+  .btn-toggle.active &,
+  .btn-toggle:hover & {
+    @include icon-sprite(check_r_h);
+  }
+}
+
+.icon-serif {
+  @include add-sprite(font_pt);
+  .btn-toggle.active &,
+  .btn-toggle:hover & {
+    @include icon-sprite(font_pt_h);
+  }
+}
+
+.icon-open {
+  @include add-sprite(font_open);
+  .btn-toggle.active &,
+  .btn-toggle:hover & {
+    @include icon-sprite(font_open_h);
+  }
+}

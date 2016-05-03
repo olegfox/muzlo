@@ -1,0 +1,122 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Browser fixes
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Abstract IE fixes
+.ie {
+  .datetimepicker .add-on {
+    line-height: 47px;
+  }
+}
+
+// IE7
+.ie7 {
+
+}
+
+// IE8
+.ie8 {
+
+}
+
+// IE9
+.ie9 {
+
+}
+
+// IE10
+.ie1 {
+
+}
+
+// Firefox
+.gecko {
+  .datetimepicker .add-on {
+    line-height: 49px;
+  }
+}
+
+// Chrome & Safari
+.chrome,
+.safari {
+
+}
+
+// Opera
+.opera {
+
+}
+
+// LINUX
+.linux {
+  // Firefox
+  .ff {
+
+  }
+
+  // Chrome & Safari
+  .chrome,
+  .safari {
+
+  }
+
+  // Opera
+  .opera {
+
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Browser check
+
+// If browser doesn't support some styles - make visible message
+.no-audio,
+.no-backgroundsize,
+.no-rgba,
+.no-generatedcontent {
+  #old-browser-wrapp {
+    display: block;
+  }
+}
+
+#old-browser-wrapp {
+  display: none; // Hide entire block for newest browsers
+  background: $page-bg url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMAf7YpoZUAAAAQSURBVAjXYxBgUGBwYGgAAAJYAPF9gAMvAAAAAElFTkSuQmCC) repeat 0 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 700000;
+  .message {
+    line-height: 20px;
+    text-align: center;
+    padding: 15px 20px;
+    max-width: 500px;
+    margin: 10px auto;
+    background: $color-black;
+    &.first {
+      margin: 50px auto 10px auto;
+    }
+  }
+}
+
+.browser-list {
+  @include reset-list;
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid #222;
+  li {
+    a {
+      text-decoration: none;
+      display: block;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      padding: 5px;
+      &:hover {
+        border-color: $color-white;
+        background-color: #111;
+      }
+    }
+  }
+}

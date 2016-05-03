@@ -1,0 +1,71 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Preface zone
+// ---------------------------------------------------------------------------------------------------------------------
+
+#section-preface {
+  overflow: hidden;
+  background: url(../images/bg.jpg) no-repeat 0 0;
+  background-size: cover;
+  position: relative;
+  font-weight: 300;
+}
+
+.preface-dude {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 240px; // As we have sidebar
+
+}
+
+.block-welcome {
+  background: url(../images/bg_white.png);
+  margin-top: 210px;
+  position: relative;
+  z-index: 2;
+
+  padding-right: 9999px;
+  margin-right: -9999px;
+  // Title part
+  .welcome-title {
+    background: $color-grey-lighten;
+    padding: 0 25px;
+    line-height: 42px;
+    padding: 19px 30px;
+    margin: 0;
+    float: left;
+    span {
+      font-weight: 600;
+    }
+  }
+  .welcome-advice {
+    background: $color-red;
+    color: $color-white;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 42px;
+    padding: 19px 0;
+    width: 80px;
+    float: right;
+    text-align: center;
+
+  }
+  .welcome-advice-decription {
+    background: url(../images/bg_red.png) repeat 0 0;
+    color: $color-red;
+    font-size: 12px;
+    line-height: 16px;
+    padding-right: 90px;
+    text-align: right;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  // Content part
+  .content {
+    clear: both;
+    padding: 20px 30px;
+    background: url(../images/bg_white.png);
+  }
+}

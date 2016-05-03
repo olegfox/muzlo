@@ -1,0 +1,213 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Single post (image, text, moderator view, all in one)
+// ---------------------------------------------------------------------------------------------------------------------
+
+
+.post {
+  background: $color-grey-lighten;
+  padding-right: 9999px;
+  margin-right: -9999px;
+  margin-bottom: 50px;
+  // Type of post (public or for moderator)
+  &.post-public {
+
+  }
+  &.post-moderator {
+
+  }
+
+  .post-inner {
+    background: $color-white;
+  }
+}
+
+// Post header
+.post-footer,
+.post-header {
+  @include overflow;
+}
+
+.post-id,
+.post-date,
+.post-category {
+  line-height: 50px;
+  padding: 0 15px;
+}
+
+.post-id {
+  background: $color-blue;
+  color: $color-white;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  float: left;
+}
+.post-date,
+.post-category {
+  background: $color-grey-lighten;
+  color: $color-grey;
+}
+
+.post-date {
+  float: left;
+  color: $color-grey !important;
+  font-weight: 300 !important;
+  text-decoration: none !important;
+  a {
+    color: $color-grey !important;
+    font-weight: 300 !important;
+    text-decoration: none !important;
+  }
+}
+.post-category {
+  float: right;
+  a {
+    color: $color-grey;
+    font-weight: 300;
+    text-decoration: none;
+    &:hover {
+      color: $color-link;
+    }
+  }
+}
+
+// Content part
+.post-content {
+  padding: 20px 30px;
+}
+
+// Footer part
+.post-social {
+  float: left;
+  .pluso {
+    vertical-align: bottom;
+    border-radius: 0;
+    .pluso-wrap {
+      background: transparent !important;
+      margin: 0;
+      padding: 0;
+      float: left;
+      a {
+        margin: 0;
+        width: 50px;
+        height: 50px;
+        float: left;
+      }
+      // By type
+      .pluso-vkontakte {
+        background: $color-vk url(../images/icon/s_vk_h.png) no-repeat center center;
+        &:hover {
+          background: darken($color-vk, 10%) url(../images/icon/s_vk_h.png) no-repeat center center;
+        }
+      }
+      .pluso-facebook {
+        background: $color-fb url(../images/icon/s_fb_h.png) no-repeat center center;
+        &:hover {
+          background: darken($color-fb, 10%) url(../images/icon/s_fb_h.png) no-repeat center center;
+        }
+      }
+      .pluso-twitter {
+        background: $color-tw url(../images/icon/s_tw_h.png) no-repeat center center;
+        &:hover {
+          background: darken($color-tw, 10%) url(../images/icon/s_tw_h.png) no-repeat center center;
+        }
+      }
+      .pluso-more {
+        background: $color-red url(../images/icon/plus.png) no-repeat center center !important;
+        &:hover {
+          background: darken($color-red, 10%) url(../images/icon/plus.png) no-repeat center center !important;
+        }
+      }
+    }
+    // Counter
+    .pluso-counter {
+      float: left;
+      width: 50px;
+      line-height: 50px;
+      text-align: center;
+      padding: 0;
+      background: $color-grey-lighten;
+      position: relative;
+      b {
+        position: static;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+        font-family: 'Open Sans', Arial, serif !important; // Hardly set font...
+        color: $color-grey !important;
+        padding: 0;
+        line-height: 50px !important;
+        font-weight: 300 !important;
+        display: block;
+        &:after {
+          z-index: 10;
+          left: -6px;
+          top: 50%;
+          margin-top: -6px;
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-right: 6px solid $color-grey-lighten;
+          border-top: 6px solid transparent;
+          border-bottom: 6px solid transparent;
+        }
+      }
+    }
+  }
+}
+
+.post-decline,
+.post-comments,
+.post-approve,
+.post-likes {
+  line-height: 40px;
+  padding: 4px 5px;
+  height: 50px;
+  .icon {
+
+  }
+  .value {
+    padding-right: 5px;
+  }
+}
+
+.post-approve,
+.post-comments {
+  float: right;
+  .icon {
+
+  }
+}
+.post-decline,
+.post-likes {
+  float: right;
+  .icon {
+
+  }
+}
+
+.post-right,
+.post-left {
+  float: right;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  .icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -5px;
+    margin-top: -9px;
+  }
+}
+
+// Fix VK comments
+#vk_comments {
+  width: 100% !important;
+  iframe {
+    width: 100% !important;
+    display: block;
+  }
+}
+

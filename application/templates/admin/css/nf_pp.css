@@ -1,0 +1,67 @@
+	.pp_tree, .pp_mark {
+		font: normal 110%/1.4 monospace;
+		margin: 0 0 10px 0;
+		padding: 0;
+	}
+	.pp_mark {
+		font-weight: bold;
+		margin: 0;
+	}
+	.pp_subtree {
+		padding: 0;
+		margin: 0 0 10px 20px;
+	}
+	.pp_item {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.pp_ctrl {
+		font-style: normal;
+		cursor: pointer;
+	}
+	.pp_ctrlDisabled {
+		visibility: hidden;
+	}
+	.pp_ctrlCollapseCh {
+		padding: 0 0 0 .1em;
+	}
+	.pp_key {
+		font-weight: bold;
+		color: #63d76a;
+	}
+	.pp_scope {
+		font-style: italic;
+	}
+	.pp_scope_public{
+		color: #724ADC
+	}
+	.pp_scope_private {
+		color: red;
+	}
+	.pp_scope_protected {
+		color: gray;
+	}
+	.pp_bool, .pp_null {
+		font-style: italic;
+		color: #b5b326;
+	}
+	.pp_empty {
+		font-style: italic;
+		color: #aaa;
+	}
+	.pp_num {
+		color: #19869e;
+	}
+	.pp_string {
+		color: #c0c0c0;
+	}
+	.pp_resource {
+		color: #74169b;
+	}
+	.pp_object {
+		color: #cc121a;
+	}
+	.pp_array {
+		color: #7fffd4;
+	}

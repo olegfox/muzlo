@@ -1,0 +1,47 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Main SCSS file for project. Anything goes included here
+// ---------------------------------------------------------------------------------------------------------------------
+@charset "utf-8";
+
+// Import compass because it rocks
+@import "compass";
+@import "susy";
+
+@import "variables";
+@import "mixins";
+
+@import "base";
+@import "layout";
+
+// Helpers
+@import "helpers";
+
+// Include icons
+@import "icons";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// INCLUDE FONTS
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600&subset=latin,cyrillic);
+
+// ---------------------------------------------------------------------------------------------------------------------
+// INCLUDE CONTRIB LIBS
+@import "vendor/normalize";
+@import "vendor/chosen";
+@import "vendor/colorbox";
+@import "vendor/uniform";
+@import "vendor/bootstrap.datetimepicker";
+@import "vendor/confirm";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// INCLUDE CONTRIB LIBS
+@import "partials/section.header";
+@import "partials/section.content";
+@import "partials/section.footer";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// RESPONSIVE
+@import "responsive";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// BROWSER
+@import "browser";

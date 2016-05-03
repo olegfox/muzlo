@@ -1,0 +1,16 @@
+<?php /* Smarty version 2.6.27, created on 2016-03-16 09:05:50 compiled from modules/users/usersCreate.tpl */ ?><h2>Создание пользователя</h2><form class="form-horizontal" method="POST" action=""> <?php if ($this->_tpl_vars['obj']['message'] !== FALSE): ?><div style="background: #dfdece; margin: 15px; padding: 25px; border: 1px solid #000; border-radius: 15px 15px 15px 15px;"><?php echo $this->_tpl_vars['obj']['message']; ?></div><?php else: ?> <?php $_from = $this->_tpl_vars['obj']['form']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)): foreach ($_from as $this->_tpl_vars['form']):
+?> <?php if ($this->_tpl_vars['form']['type'] != 'hidden'): ?><div class="control-group"><?php endif; ?> <?php if ($this->_tpl_vars['form']['type'] != 'hidden'): ?> <label class="control-label"> <?php endif; ?> <?php echo $this->_tpl_vars['form']['name']; ?> <?php if ($this->_tpl_vars['form']['type'] != 'hidden'): ?> </label> <?php endif; ?> <?php if ($this->_tpl_vars['form']['type'] != 'hidden'): ?><div class="controls gg"><?php endif; ?> <?php if ($this->_tpl_vars['form']['type'] != 'select'): ?> <input type="<?php echo $this->_tpl_vars['form']['type']; ?>
+" name="<?php echo $this->_tpl_vars['form']['id']; ?>
+" value="<?php echo $this->_tpl_vars['form']['value']; ?>
+"> <?php else: ?> <select name="<?php echo $this->_tpl_vars['form']['id']; ?>
+"> <option>Выберите <?php echo $this->_tpl_vars['form']['name']; ?>
+</option> <?php if (! empty ( $this->_tpl_vars['form']['vars'] )): ?> <?php $_from = $this->_tpl_vars['form']['vars']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)): foreach ($_from as $this->_tpl_vars['cat']):
+?> <option value="<?php echo $this->_tpl_vars['cat']['id']; ?>
+"><?php echo $this->_tpl_vars['cat']['title']; ?>
+</option> <?php endforeach; endif; unset($_from); ?> <?php endif; ?> </select> <?php endif; ?> <?php if ($this->_tpl_vars['form']['type'] != 'hidden'): ?></div><?php endif; ?> <?php if ($this->_tpl_vars['form']['type'] != 'hidden'): ?></div><?php endif; ?> <?php endforeach; endif; unset($_from); ?><div class="control-group"><label class="control-label">Выберите шаблон из списка</label><div class="controls"><select name="id_patterns[]"> <?php $_from = $this->_tpl_vars['obj']['patternsListArr']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)): foreach ($_from as $this->_tpl_vars['piece']):
+?> <option value="<?php echo $this->_tpl_vars['piece']['id']; ?>
+"><?php echo $this->_tpl_vars['piece']['title']; ?>
+</option> <?php endforeach; endif; unset($_from); ?> </select></div></div><div class="control-group"><label class="control-label">Выберите рекламу из списка</label><div class="controls"><select name="id_adverts[]" multiple> <?php $_from = $this->_tpl_vars['obj']['advertsListArr']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)): foreach ($_from as $this->_tpl_vars['piece']):
+?> <option value="<?php echo $this->_tpl_vars['piece']['id']; ?>
+"><?php echo $this->_tpl_vars['piece']['title']; ?>
+</option> <?php endforeach; endif; unset($_from); ?> </select></div></div><div class="control-group"><div class="controls"><input class="btn" type="submit" name="submit" value="Сохранить"></div></div></form> <?php endif; ?>

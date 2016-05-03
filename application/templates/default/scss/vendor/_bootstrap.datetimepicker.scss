@@ -1,0 +1,143 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Just a quick restyling for datetimepicker
+// ---------------------------------------------------------------------------------------------------------------------
+
+.bootstrap-datetimepicker-widget {
+  display: none;
+  position: absolute;
+  background: red;
+  z-index: 10050;
+  background: $color-input;
+  border: 1px solid $color-input-b;
+  padding: 10px;
+  ul {
+    @include reset-list;
+  }
+  font-weight: 300;
+
+  .table-condensed {
+    tr {
+      th {
+        text-align: center;
+        border: 1px solid $color-input-b;
+      }
+      .switch {
+         padding: 0 15px;
+      }
+      .prev, .next {
+        cursor: pointer;
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        &:hover {
+          color: $color-white;
+          background: $color-red;
+          text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+        }
+      }
+      .second,
+      .minute,
+      .hour,
+      .month,
+      .year,
+      .day {
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid $color-input-b;
+        &.active,
+        &:hover {
+          color: $color-white;
+          background: $color-red;
+          text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+        }
+        &.old {
+          color: #aaa;
+          background: $color-white;
+        }
+      }
+      .month,
+      .year {
+        width: auto;
+        padding: 0 10px;
+        display: block;
+      }
+      .month + .month,
+      .year + .year {
+        margin-bottom: -1px;
+      }
+    }
+  }
+
+  .picker-switch {
+    //margin-top: 10px;
+    a {
+      display: block;
+      cursor: pointer;
+      height: 40px;
+      position: relative;
+
+      background-color: $color-green;
+      &:hover {
+        background-color: darken($color-green, 10%);
+      }
+      .icon-time,
+      .icon-calendar,
+      .glyphicon-time,
+      .glyphicon-calendar {
+        width: 20px;
+        height: 21px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -10px;
+        margin-left: -10px;
+      }
+      .icon-time,
+      .glyphicon-time {
+        background: url(../images/clock.png) no-repeat center center;
+
+      }
+      .icon-calendar,
+      .glyphicon-calendar {
+        background: url(../images/calendar.png) no-repeat center center;
+      }
+    }
+
+
+  }
+  .timepicker-picker {
+    text-align: center;
+  }
+  .btn {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    vertical-align: middle;
+    position: relative;
+    background: $color-input;
+    border: 1px solid $color-input-b;
+    &:hover {
+      background: $color-white;
+    }
+    .icon-chevron-up,
+    .icon-chevron-down,
+    .glyphicon-chevron-up,
+    .glyphicon-chevron-down {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -6px;
+      margin-left: -8px;
+    }
+    .icon-chevron-up,
+    .glyphicon-chevron-up {
+      @include add-sprite(arrow_g_t);
+    }
+    .icon-chevron-down,
+    .glyphicon-chevron-down {
+      @include add-sprite(arrow_g_d);
+    }
+  }
+}

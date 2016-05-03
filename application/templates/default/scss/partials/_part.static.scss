@@ -1,0 +1,27 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// All styles related to static item content
+// ---------------------------------------------------------------------------------------------------------------------
+
+.static-node {
+  background: $color-grey-lighten;
+  padding-left: 9999px;
+  margin-left: -9999px;
+  margin-bottom: 50px;
+  .static-node-inner {
+    background: $color-white;
+    padding-right: 9999px;
+    margin-right: -9999px;
+  }
+
+  .node-title {
+    background: $color-grey-lighten;
+    float: left;
+    line-height: 42px;
+    padding: 19px 30px;
+  }
+  .node-content {
+    clear: both;
+    padding: 20px 30px;
+    font-weight: 300;
+  }
+}

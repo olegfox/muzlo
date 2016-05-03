@@ -1,0 +1,9 @@
+uploads
+webstat
+.idea
+cache
+config
+local
+.bash_history
+application/config/config.php
+application/config/database.php

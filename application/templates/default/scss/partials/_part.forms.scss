@@ -1,0 +1,341 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Forms (included modals with colorbox)
+// ---------------------------------------------------------------------------------------------------------------------
+
+.form {
+  background: $color-grey-lighten;
+  padding-left: 9999px;
+  margin-left: -9999px;
+  margin-bottom: 50px;
+  .form-inner {
+    background: $color-white;
+    padding-right: 9999px;
+    margin-right: -9999px;
+  }
+}
+
+.form-title {
+  background: $color-grey-lighten;
+  float: left;
+  line-height: 42px;
+  padding: 19px 30px;
+}
+
+.form-content {
+  clear: both;
+  padding: 20px 30px;
+  font-weight: 300;
+}
+
+.form-actions {
+  padding: 30px;
+  background: $color-grey-lighten;
+  .btn {
+    margin-right: 15px;
+  }
+}
+
+// Items
+.form-item {
+  margin-bottom: 15px;
+  .label {
+
+  }
+  .value {
+     input, textarea, select, .select {
+       width: 100%;
+     }
+  }
+  .description {
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #999;
+  }
+
+  &.checkbox-right {
+    .label {
+      float: left;
+      width: 180px;
+      line-height: 32px;
+    }
+    .value {
+      margin-left: 170px;
+      line-height: 32px;
+      input[type="text"] {
+        clear: both;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+// Additional styles for forms
+.required {
+  color: $color-red;
+}
+
+// Captcha
+// -------------------------------------------------------------------------
+.captcha-wrapper {
+  //@include overflow;
+  @include clearfix;
+  .reload {
+    @include no-font;
+    float: left;
+    border: 1px solid $color-input-b;
+    border-right: none;
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+    background: $color-input url(../images/icon/refresh.png) no-repeat center center;
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+  img {
+    height: 48px;
+    width: auto;
+    border: 1px solid $color-input-b;
+    float: left;
+  }
+  span {
+    float: left;
+    padding: 0 8px;
+    line-height: 50px;
+    color: #999;
+  }
+  input {
+    float: left;
+    width: 60px !important;
+    text-align: center;
+  }
+}
+
+.fileinput-button.btn {
+  float: left;
+  line-height: normal;
+  margin-right: 20px;
+  .icon-upload {
+    margin-right: 10px;
+  }
+  // DISABLE THIS BUTTON for browsers that doesn't support File API
+  .no-filereader & {
+    display: none !important;
+    visibility: hidden !important;
+    overflow: hidden !important;
+    height: 0;
+    width: 0;
+  }
+}
+
+// Grey form wrapper
+.grey-form {
+  padding: 30px;
+  background: $color-grey-lighten;
+  margin: 30px -30px 25px -30px;
+}
+
+// Control wrapper functionality
+// -------------------------------------------------------------------------
+.toggle-control-wrapper {
+  padding-right: 3px;
+  @include overflow;
+  .radio {
+    float: left;
+    margin-right: -1px;
+    input {
+      display: none;
+    }
+    .btn {
+      line-height: normal;
+    }
+    input:checked + .btn-toggle {
+      background-color: $color-green;
+      text-shadow: none !important;
+      color: $color-white !important;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3) !important;
+    }
+  }
+}
+
+// Designer feildsets
+// -------------------------------------------------------------------------
+
+fieldset {
+  position: relative;
+  h4 {
+    padding-right: 60px;
+    margin-bottom: 25px;
+  }
+}
+
+.close-btn {
+  @include base-transition;
+  border: none;
+  background: transparent;
+  padding: 0;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  &:hover {
+    @include opacity(0.5);
+  }
+}
+
+// Select picture wrapper
+// -------------------------------------------------------------------------
+
+.available-pics {
+  overflow-y: auto;
+  max-height: 525px;
+  margin: 0 -10px -20px -10px;
+  li {
+    position: relative;
+    //float: left;
+    overflow: hidden;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 24.5%;
+    margin-bottom: 20px;
+    a {
+      margin: 0 10px 0 10px;
+      position: relative;
+      display: block;
+      img {
+
+      }
+      .select-text {
+        @include base-transition;
+        text-align: center;
+        line-height: 35px;
+        font-weight: 300;
+        background: url(../images/bg_green.png) repeat 0 0;
+        color: $color-white;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -100%;
+      }
+      // Hover event
+      &:hover {
+        img {
+          @include opacity(0.5);
+        }
+        .select-text {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+#canvas-wrapper {
+  margin: 0 -30px;
+}
+
+.canvas-suggestion {
+  font-size: 12px;
+  color: #999;
+  line-height: 14px;
+  margin-bottom: 20px;
+  span {
+    font-weight: bold;
+  }
+}
+
+#whisper-where-write {
+  float: left;
+}
+
+#whisper-font-size {
+  float: right;
+  margin-left: 15px;
+  .value {
+    text-align: center;
+  }
+}
+
+#whisper-how-write {
+  float: right;
+  .btn {
+    padding-top: 12px;
+    padding-bottom: 11px;
+  }
+}
+
+.inputs-top-bottom {
+  clear: both;
+}
+
+.grey-form {
+  input[type="text"] {
+    background: $color-white;
+  }
+}
+#canvas-wrapper {
+  background: url(../images/loader.gif) no-repeat center center;
+  canvas {
+    image-rendering: optimizeSpeed;
+    image-rendering:-o-crisp-edges;
+    image-rendering:-webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+  }
+}
+
+
+// Approve popup
+// -------------------------------------------------------------------------
+.cboxInner-header {
+   .cboxInner-title {
+     float: left;
+     line-height: 50px;
+     padding: 0 20px;
+     text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+     background: $color-blue;
+     color: $color-white;
+     font-size: 16px;
+     margin: 0;
+
+   }
+}
+
+.cboxInner-content {
+  padding: 30px;
+  clear: both;
+  font-weight: 300;
+}
+
+.cboxInner-footer {
+  text-align: right;
+  background: $color-grey-lighten;
+  .btn + .btn {
+    margin-left: -4px;
+  }
+}
+
+// Datetime picker
+// -------------------------------------------------------------------------
+.datetimepicker {
+  position: relative;
+  input[type="text"] {
+    padding-right: 180px;
+  }
+  .add-on {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid $color-input-b;
+    background: $color-white;
+    text-align: center;
+    width: 170px;
+    line-height: 48px;
+    cursor: pointer;
+    &:hover {
+      background: $color-input;
+    }
+  }
+}

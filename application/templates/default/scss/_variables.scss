@@ -1,0 +1,93 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Custom variables
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Base variables for fonts
+// ---------------------------------------------------------------------------------------------------------------------
+$base-font-size: 16px;
+$base-font-line-height: 30px;
+
+$base-transition-time: 0.2s;
+$base-transition-type: linear;
+
+$base-border-radius: 0;
+
+$base-font-text: 'open sans', arial, serif;
+$base-font-title: $base-font-text;
+
+// Use fallback for PX compatibility with old browsers
+$rem-with-px-fallback: true;
+
+// Colors
+// ---------------------------------------------------------------------------------------------------------------------
+$color-white: #fff;
+$color-black: #5a5a5a;
+$color-grey: #aaa;
+$color-grey-light: #e1e1e1;
+$color-grey-lighten: #f8f8f8;
+
+$page-bg: #eee;
+
+$color-title: $color-black;
+$color-text: $color-black;
+
+$color-link: #39579a;
+
+$color-red: #e86340;
+$color-green: #3ad27e;
+$color-blue: #2e7293;
+$color-azure: #26c1ff;
+
+$color-fb: #39579a;
+$color-vk: #5b7fa6;
+$color-tw: #00abf0;
+
+$color-input: #fafafa;
+$color-input-b: #eaeaea;
+
+$color-placeholder: #cbcbcb;
+
+
+// Colors for success, error & warning labels, buttons, messages
+$color-info: #dff0d8;
+$color-info-b: #cadbbd;
+$color-info-font: #468847;
+
+$color-error: #efcbc6;
+$color-error-b: #fda99e;
+$color-error-font: #da4021;
+
+$color-warning: #fcf8e3;
+$color-warning-b: #efe3cb;
+$color-warning-font: #c09853;
+
+// Browser selection color
+// ---------------------------------------------------------------------------------------------------------------------
+$selection-bg:      $color-text !default;
+$selection-color:   invert($color-text) !default;
+
+// Grids
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Set SUSY columns (see http://susy.oddbird.net/ for reference)
+//$total-columns: 8;
+//$column-width: 140px;
+//$gutter-width: 0px;
+//$grid-padding: 0px;
+
+// Override the type of shell containing your grid
+// Supported:
+// - static
+// - fluid
+// - magic
+//$container-style: magic;
+
+// Override the total width of your grid with an arbitrary length.
+// For ex.: $container-width: 500px,
+//$container-width: false;
+
+// Show gird helpers (true\false)
+//$show-grid-helpers: false !default;
+
+
+

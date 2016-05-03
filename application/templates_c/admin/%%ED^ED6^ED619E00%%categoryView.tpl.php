@@ -1,0 +1,4 @@
+<?php /* Smarty version 2.6.27, created on 2016-02-09 10:52:25 compiled from modules/category/categoryView.tpl */ ?><h2>Список категорий <a href="/admin/category/add/" class="btn btn-mini"><i class="icon icon-plus"></i> Добавить город</a> <a href="/admin/category/add/?subcat" class="btn btn-mini"><i class="icon icon-plus"></i> Добавить категорию</a></h2><div class="cat-list"><?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "modules/category/_categoryLevel.tpl", 'smarty_include_vars' => array('root' => $this->_tpl_vars['obj']['items'])));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars); ?></div>

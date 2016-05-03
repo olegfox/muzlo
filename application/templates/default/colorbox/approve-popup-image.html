@@ -1,0 +1,71 @@
+<div id="cboxInner">
+  <form action="#" method="POST" enctype="multipart/form-data">
+    <div class="cboxInner-header">
+      <h2 class="cboxInner-title">
+        Редактирование секрета
+        <b>#11568</b>
+      </h2>
+    </div>
+    <div class="cboxInner-content">
+
+      <div class="form-item">
+        <div class="label">
+          Категория
+        </div>
+        <div class="value">
+          <select name="whisper-category" id="whisper-category" data-placeholder="Выберите категорию...">
+            <option value="0">#Бабурка</option>
+            <option value="1">#Кичкас</option>
+            <option value="2">#Правый_Берег</option>
+            <option value="3">#Космос</option>
+            <option value="4">#Южный</option>
+            <option value="5">#Бородниский</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-item">
+        <img class="post-image" src="assets/generated_pic.jpg" alt="">
+      </div>
+
+      <div class="form-item checkbox-right">
+        <div class="label">
+           Опубликовать в VK?
+        </div>
+        <div class="value">
+          <input type="checkbox">
+           <!--Для данного города не указана группа! -->
+        </div>
+      </div>
+
+      <div class="form-item checkbox-right">
+        <div class="label">
+          Показывать на сайте с
+        </div>
+        <div class="value">
+          <input type="checkbox" name="approved">
+        </div>
+      </div>
+      <div class="form-item">
+        <div class="value">
+          <div id="datetimepicker1" class="datetimepicker input-group date input-append">
+            <input type="text" data-format="dd/MM/yyyy hh:mm:ss" value="2014-02-27 21:59:45" />
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+              <span>серверное время</span>
+            </span>
+          </div>
+        </div>
+        <div class="description">
+          (Поставьте галочку что бы отображать на сайте)
+        </div>
+      </div>
+
+
+    </div>
+    <div class="cboxInner-footer">
+      <input type="submit" class="btn btn-green" value="Опубликовать" />
+      <button class="btn btn-red btn-cbox-close">Закрыть</button>
+    </div>
+  </form>
+</div>

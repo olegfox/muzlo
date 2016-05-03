@@ -1,0 +1,473 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Section header
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Header blocks positions (for desktop interfaces, sure)
+.menu-unapproved,
+.menu-whisper,
+.block-social,
+.block-select-country {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.block-select-country {
+  bottom: 0;
+}
+
+.block-social {
+  bottom: 50px;
+}
+
+.menu-unapproved {
+  bottom: 200px;
+}
+.menu-whisper {
+  bottom: 150px;
+}
+
+
+
+
+
+// Main header styles
+
+#section-header {
+  @include base-transition;
+  width: 240px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+
+  //border-right: 1px solid $color-input-b;
+  background: $color-white;
+}
+
+.block-logo {
+  text-align: center;
+  height: 120px;
+  line-height: 120px;
+}
+
+// MENU BLOCK
+#main-menu {
+  // Make visible everywhere
+  display: block !important;
+}
+
+.block-menu {
+  .menu-item + .menu-item {
+    margin-top: -1px;
+  }
+  .menu-item {
+    position: relative;
+    .icon-arrow-right {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      margin-top: -(icon-sprite-height(arrow_w_r)/2) + 1px;
+    }
+    & > a {
+      text-align: center;
+      display: block;
+      color: $color-black;
+      font-weight: 300;
+      text-decoration: none;
+      //padding: 14px 15px;
+      padding: 9px 15px;
+      border-top: 1px solid $color-input-b;
+      border-bottom: 1px solid $color-input-b;
+      &.active-page,
+      &.active,
+      &:hover {
+        color: $color-white;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+        .icon-arrow-right {
+          @include icon-sprite(arrow_w_r);
+        }
+      }
+      &.item-blue.active-page,
+      &.item-blue.active,
+      &.item-blue:hover {
+        border-color: #6295ae;
+        background-color: $color-blue;
+      }
+      &.item-green.active-page,
+      &.item-green.active,
+      &.item-green:hover {
+        border-color: #4ae48f;
+        background-color: $color-green;
+      }
+      &.item-azure.active-page,
+      &.item-azure.active,
+      &.item-azure:hover {
+        border-color: #5cd1ff;
+        background-color: $color-azure;
+      }
+      &.item-red.active-page,
+      &.item-red.active,
+      &.item-red:hover {
+        border-color: #ee8a70;
+        background-color: $color-red;
+      }
+    }
+
+  }
+}
+
+.menu-btn {
+  .btn {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    color: $color-white !important;
+    padding-left: 20px;
+    padding-right: 0;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    .icon-not-approved {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      margin-top: -10px;
+    }
+    .icon-whisper {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+    }
+  }
+  .btn-blue {
+    border-color: #6295ae;
+  }
+  .btn-azure {
+    border-color: #5cd1ff;
+  }
+  .btn-red {
+    border-color: #ee8a70;
+  }
+  .btn-green {
+    border-color: #a9dd6b;
+  }
+}
+
+.menu-unapproved {
+  a {
+
+  }
+}
+.menu-whisper {
+  a {
+
+  }
+}
+
+#menu-tags-btn {
+  &.active {
+    .icon {
+      @include add-sprite(close_h);
+    }
+  }
+}
+#select-country-btn {
+  &.active {
+    .icon-arrow-right {
+      @include add-sprite(close);
+    }
+  }
+}
+
+// SEARCH
+.search-form {
+  position: relative;
+  margin-bottom: -1px;
+  .search-input {
+    //padding-right: 60px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    background: $color-input;
+    width: 100%;
+  }
+  .search-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include base-transition;
+    @include no-font;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: url(../images/icon/search.png) no-repeat center center;
+    &:hover {
+      @include opacity(0.7);
+    }
+  }
+}
+
+
+// SOCIAL BLOCK
+.block-social {
+  text-align: center;
+  padding: 25px 0;
+  ul {
+    width: 150px;
+    margin: 0 auto;
+    @include overflow;
+  }
+  li {
+    float: left;
+    a {
+      display: block;
+      width: 50px;
+      height: 50px;
+      position: relative;
+      .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -20px;
+        margin-top: -20px;
+      }
+    }
+  }
+}
+// Social items
+.social {
+  .icon {
+    height: icon-sprite-height(s_fb);
+    width: icon-sprite-width(s_fb);
+  }
+}
+.social-fb {
+  .icon {
+    @include icon-sprite(s_fb);
+  }
+  &:hover {
+    background: $color-fb;
+    .icon {
+      @include icon-sprite(s_fb_h);
+    }
+  }
+}
+.social-tw {
+  .icon {
+    @include icon-sprite(s_tw);
+  }
+  &:hover {
+    background: $color-tw;
+    .icon {
+      @include icon-sprite(s_tw_h);
+    }
+  }
+}
+.social-vk {
+  .icon {
+    @include icon-sprite(s_vk);
+  }
+  &:hover {
+    background: $color-vk;
+    .icon {
+      @include icon-sprite(s_vk_h);
+    }
+  }
+}
+
+// SELECT COUNTRY BLOCK
+.block-select-country {
+
+}
+
+#select-country-btn {
+  position: relative;
+  background: $color-input;
+  display: block;
+  border-top: 1px solid $color-input-b;
+  padding: 14px 50px;
+  text-shadow: none;
+  color: $color-black !important;
+  width: 100%;
+  text-align: center;
+  line-height: normal;
+  &.active,
+  &:hover {
+    background: $color-input-b;
+  }
+  // Icons
+  .icon-city {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    margin-top: -(icon-sprite-height(city)/2);
+  }
+  .icon-arrow-right {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -(icon-sprite-height(arrow_g_r)/2) + 1px;
+  }
+}
+
+// Tags & Map blocks
+// -------------------------------------------------------------------------------
+#mask {
+  background: #000;
+  @include opacity(0.7);
+  display: none;
+  z-index: 40;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  &.first-enter {
+    z-index: 1000;
+    cursor: default;
+  }
+}
+
+#white-mask {
+  background: #fff;
+  @include opacity(0.9);
+  display: none;
+  z-index: 40;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+}
+
+#map-wrapper-outside {
+  //opacity: 0;
+  display: none;
+  z-index: 41;
+  position: fixed;
+  left: 50%;
+  width: 680px;
+  margin-left: -340px;
+  top: 0;
+  bottom: 0;
+  &.first-enter {
+    z-index: 1001;
+  }
+}
+
+// Map wrapper
+#map-wrapper {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  .select-country-wrapper {
+    max-width: 580px;
+    margin: 50px auto 35px auto;
+    h1 {
+      float: left;
+      background: $color-white;
+      font-size: 16px;
+      width: 320px;
+      text-align: center;
+      line-height: 50px;
+      margin: 0;
+    }
+    .styled-select {
+      margin-left: 320px;
+      //width: 240px;
+
+      // Fix icon for chosen
+      .chosen-container-single {
+        .chosen-search {
+          input[type="text"] {
+            background-position: 95% center;
+          }
+        }
+      }
+    }
+  }
+  
+  .wrapper {
+    position: relative;
+  }
+
+  // Style baloon
+  .baloon {
+    position: absolute;
+    font-weight: 300;
+    color: $color-black;
+    line-height: 40px;
+    padding: 0 20px;
+    background: $color-white;
+    &:after {
+      content: "";
+      border-top: 10px solid $color-white;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -10px;
+    }
+  }
+}
+
+// Make SVG responsive
+#map {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  //padding-bottom: 100%;
+  padding-bottom: 120%;
+  vertical-align: middle;
+  overflow: hidden;
+  svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+// Tags menu
+#menu-tags {
+  display: none;
+  position: absolute;
+  left: 100%;
+  @include reset-list;
+
+  width: 450px; // Don't know why... buy... why not? :)
+
+  li {
+    margin-right: -1px;
+    margin-bottom: -1px;
+    float: left;
+    a {
+      background-color: $color-white;
+      padding: 9px 15px;
+      //line-height: 50px;
+      display: block;
+      font-weight: 300;
+      color: $color-black;
+      border: 1px solid $color-input-b;
+      text-decoration: none !important;
+      &:hover,
+      &.active {
+        background-color: $color-green;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+        color: $color-white;
+        border-color: $color-green;
+      }
+    }
+  }
+}
+

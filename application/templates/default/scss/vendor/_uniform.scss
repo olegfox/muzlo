@@ -1,0 +1,46 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Uniform restyler
+// ---------------------------------------------------------------------------------------------------------------------
+
+.checker {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: middle;
+  &.focus {
+
+  }
+  &.hover,
+  &:hover {
+     span {
+       background: $color-input;
+     }
+  }
+  // Inner
+  span {
+    background: $color-input;
+    border: 1px solid $color-input-b;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    *display: inline;
+    cursor: pointer;;
+    zoom: 1;
+    &.checked {
+      background: $color-green url(../images/checked.png) no-repeat center center !important;
+      border-color: $color-green;
+    }
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    @include opacity(0);
+    border: none;
+    background: transparent;
+    display: inline-block;
+    *display: inine;
+    zoom: 1;
+    height: 28px;
+    width: 100%;
+    cursor: pointer;
+  }
+}

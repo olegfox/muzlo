@@ -1,0 +1,3 @@
+<?php /* Smarty version 2.6.27, created on 2016-03-16 09:06:00 compiled from modules/users/usersView.tpl */ ?><h2>Список пользователей <a class="btn btn-mini" href="/admin/users/create/"><i class="icon-plus"></i> Создать пользователя</a></h2><div class="menu"><?php $_from = $this->_tpl_vars['obj']['users']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)): foreach ($_from as $this->_tpl_vars['users']):
+?><p class="title"><?php echo $this->_tpl_vars['users']->first_name; ?> <a class="btn btn-mini" href="/admin/users/edit/<?php echo $this->_tpl_vars['users']->id; ?>
+"><i class="icon icon-pencil"></i> Изменить</a></p><?php endforeach; endif; unset($_from); ?></div>

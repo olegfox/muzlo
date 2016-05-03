@@ -1,0 +1,53 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Section footer
+// ---------------------------------------------------------------------------------------------------------------------
+
+#section-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin-top: 50px;
+  background: $color-grey-light;
+  background: $color-grey-lighten;
+  padding-left: 9999px;
+  margin-left: -9999px;
+  .section-footer-inner {
+    background: $color-grey-light;
+    padding-left: 9999px;
+    margin-left: -9999px;
+    @include overflow;
+    font-size: 12px;
+    //line-height: 24px;
+    padding-top: 14px;
+    padding-bottom: 8px;
+  }
+  .container {
+
+  }
+}
+
+.block-footer-links {
+  float: left;
+  ul {
+    li {
+      float: left;
+      padding-right: 15px;
+      a {
+        font-weight: 600px;
+        color: $color-black;
+        text-decoration: none;
+        &:hover {
+          color: $color-link;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.block-footer-copyrights {
+  float: right;
+  padding-right: 30px;
+}

@@ -1,0 +1,27 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Section content
+// ---------------------------------------------------------------------------------------------------------------------
+
+@import "zone.preface";
+
+@import "part.post.scss";
+@import "part.banner.scss";
+@import "part.static.scss";
+@import "part.forms.scss";
+@import "part.pager.scss";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Styles related to content zone
+
+#section-content {
+  padding-top: 50px;
+  @include overflow;
+  font-weight: 300;
+  padding-bottom: 100px;
+}
+
+#page {
+  position: relative;
+  height: auto;
+  min-height: 100%;
+}

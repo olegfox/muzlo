@@ -1,0 +1,329 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Base styles for application: typo, normalize, etc.
+// ---------------------------------------------------------------------------------------------------------------------
+
+* {
+  outline: none !important; // Remove webkit horrible outline
+}
+
+// TYPOGRAPHY
+h1, h2, h3, h4, h5, h6 {
+  @include title;
+  color: $color-text;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 10px;
+  margin-top: 0;
+  letter-spacing: 0;
+  &.no-margin {
+    margin: 0;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+// links
+a {
+  font-weight: 600;
+  @include base-transition;
+  color: $color-link;
+  text-decoration: underline;
+  &:visited {
+    color: $color-link;
+  }
+  &:hover {
+    text-decoration: none;
+    color: darken($color-link, 10%);
+  }
+  &:active {
+    text-decoration: none;
+  }
+}
+
+// Paragraphs
+p {
+  margin: 0 0 10px 0;
+}
+
+// Lists
+ul, ol {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 25px;
+  li {
+    padding: 0 0 5px 0;
+    margin: 0;
+  }
+}
+
+
+// IMAGES
+img {
+  border: none;
+  @include responsive-image;
+}
+
+// INPUTS AND OTHER FORM ELEMENTS
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Placeholders styling
+::-webkit-input-placeholder {
+  color: $color-placeholder;
+}
+:-moz-placeholder {
+  color: $color-placeholder;
+}
+::-moz-placeholder {
+  color: $color-placeholder;
+}
+:-ms-input-placeholder {
+  color: $color-placeholder;
+}
+
+textarea,
+select,
+input[type="file"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+  @include base-transition;
+  @include text;
+  border: 1px solid $color-input-b;
+  font-weight: 300;
+  color: $color-text;
+  font-size: $base-font-size;
+  margin: 0;
+  border-radius: $base-border-radius;
+  -webkit-appearance: none;
+  @include box-sizing(border-box);
+  outline: none !important;
+  background: $color-grey-lighten;
+  padding: 13px;
+  &:focus {
+    //border-color: $color-red;
+  }
+}
+
+textarea,
+select,
+input {
+  &.input-large {
+    font-size: $base-font-size * 1.2;
+    padding: 12px 9px 10px 9px;
+  }
+  &.input-small {
+    font-size: $base-font-size * 0.8;
+    padding: 2px 2px 3px 2px;
+  }
+  &.input-short {
+    width: 100px !important;
+  }
+}
+
+select {
+
+}
+
+textarea {
+  height: auto;
+}
+
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+
+}
+
+input[type="submit"] {
+
+}
+
+// BUTTONS
+.btn {
+  @include base-transition;
+  font-weight: 300;
+  display: inline-block;
+
+  padding: 15px 15px 13px 15px;
+
+  border: none;
+  border-radius: $base-border-radius;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: none;
+  color: $color-white !important; // Because there is A tags
+  @include title;
+  font-weight: 300;
+  cursor: pointer;
+  @include box-sizing(border-box);
+  font-size: $base-font-size;
+
+  text-decoration: none !important;
+  outline: none !important;
+  -webkit-backface-visibility: hidden;
+
+  &.btn-green {
+    background-color: $color-green;
+    &:hover {
+      background-color: darken($color-green, 8%);
+    }
+    &.active,
+    &:active {
+      background-color: darken($color-green, 15%);
+    }
+  }
+  &.btn-red {
+    background-color: $color-red;
+    &:hover {
+      background-color: darken($color-red, 8%);
+    }
+    &.active,
+    &:active {
+      background-color: darken($color-red, 15%);
+    }
+  }
+  &.btn-grey {
+    background-color: $color-grey-lighten;
+    text-shadow: none !important;
+    color: #777;
+    &:hover {
+      background-color: $color-grey-light;
+      color: $color-black;
+    }
+    &.active,
+    &:active {
+      background-color: $color-grey;
+      color: $color-black;
+    }
+  }
+  &.btn-link {
+    background: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    color: $color_link !important;
+    font-weight: normal;
+    border: none;
+    padding: 0;
+    &:hover {
+      color: darken($color_link, 10%) !important;
+      text-decoration: underline !important;
+    }
+  }
+  // SIZES
+  &.btn-block,
+  &.full-width {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  &.btn-smallest {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 2px 7px 2px 7px;
+    &:active {
+      padding-left: 7px;
+      padding-right: 6px;
+    }
+  }
+  &.btn-small {
+    font-size: 13px;
+    padding: 6px 12px;
+    .ie7 & {
+      padding: 4px 12px 6px 12px;
+    }
+  }
+  &.btn-medium {
+    padding-top: 7px;
+    padding-bottom: 5px;
+  }
+  // Disabled btn
+  &.disabled {
+    @include opacity(0.5);
+    cursor: default;
+  }
+
+
+  // TOGGLED BTN
+  &.btn-toggle {
+    background-color: $color-grey-lighten;
+    border: 1px solid $color-input-b;
+    text-shadow: none !important;
+    color: $color-placeholder !important;
+    .icon {
+      margin-right: 5px;
+    }
+    &.active,
+    &:hover {
+      border: 1px solid $color-green;
+      background-color: $color-green;
+      text-shadow: none !important;
+      color: $color-white !important;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3) !important;
+    }
+  }
+}
+
+// Attached buttons
+//.btn + .btn {
+//  margin-left: -4px;
+//}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    @include opacity(0);
+    background: transparent !important;
+    border: none !important;
+    font-size: 200px;
+    cursor: pointer;
+  }
+}
+

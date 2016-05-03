@@ -1,0 +1,323 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Common file for helpers
+// ---------------------------------------------------------------------------------------------------------------------
+
+.unstyled {
+  @include reset-list;
+}
+
+// Errors and other messages styling
+// ---------------------------------------------------------------------------------------------------------------------
+.message {
+  //line-height: normal;
+  display: block;
+  border-radius: $base-border-radius;
+  padding: 10px 25px;
+  margin: 10px 0;
+  border-width: 1px;
+  border-style: solid;
+  &.message-sucess,
+  &.message-status {
+    color: $color-info-font;
+    background: $color-info;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: $color-info-b;
+    * {
+      color: $color-info-font;
+    }
+  }
+  &.message-info,
+  &.message-warning {
+    color: $color-warning-font;
+    background: $color-warning;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: $color-warning-b;
+    * {
+      color: $color-warning-font;
+    }
+  }
+  &.message-error {
+    color: $color-error-font;
+    background: $color-error;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: $color-error-b;
+    * {
+      color: $color-error-font;
+    }
+  }
+  h1,h2,h3,h4 {
+    font-size: 16px;
+  }
+}
+
+// Text alignment
+// ---------------------------------------------------------------------------------------------------------------------
+.align-left {
+  text-align: left !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+// Float alignment
+// ---------------------------------------------------------------------------------------------------------------------
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.float-center {
+  text-align: center !important;
+}
+
+// Clear
+// ---------------------------------------------------------------------------------------------------------------------
+.clear {
+  clear: both;
+}
+
+// Fixed on top or bottom
+// ---------------------------------------------------------------------------------------------------------------------
+.fixed-top,
+.fixed-bottom {
+  position: fixed !important;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.fixed-top {
+  top: 0;
+}
+
+.fixed-bottom {
+  bottom: 0;
+}
+
+// Overflow
+// ---------------------------------------------------------------------------------------------------------------------
+.overflow {
+  @include overflow;
+}
+
+// Clearfix
+// ---------------------------------------------------------------------------------------------------------------------
+.clearfix {
+  @include clearfix;
+}
+
+//  Hidden elements
+// ---------------------------------------------------------------------------------------------------------------------
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.hidden-item {
+  display: none;
+}
+
+// Responsive helpers (thanks to Twitter Bootstrap :))
+// ---------------------------------------------------------------------------------------------------------------------
+
+// For desktops
+.visible-phone {
+  display: none !important;
+}
+
+.visible-tablet {
+  display: none !important;
+}
+
+.hidden-phone {
+
+}
+
+.hidden-tablet {
+
+}
+
+.hidden-desktop {
+  display: none !important;
+}
+
+.visible-desktop {
+  display: inherit !important;
+}
+
+// Tablets & small desktops only
+@media (min-width: 768px) and (max-width: 1024px) {
+// Hide everything else
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+// Show
+  .visible-tablet {
+    display: inherit !important;
+  }
+// Hide
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+
+// Phones only
+@media (max-width: 767px) {
+  // Hide everything else
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+  // Show
+  .visible-phone {
+    display: inherit !important;
+  }
+  // Use inherit to restore previous behavior
+  // Hide
+  .hidden-phone {
+    display: none !important;
+  }
+}
+
+// Print utilities
+.visible-print {
+  display: none !important;
+}
+
+.hidden-print {
+
+}
+
+@media print {
+  .visible-print {
+    display: inherit !important;
+  }
+  .hidden-print {
+    display: none !important;
+  }
+}
+
+// Show\Hide for responsive navbars, etc.
+// ---------------------------------------------------------------------------------------------------------------------
+//.navbar-collapse.in,
+//.navbar-collapse {
+//  display: block !important;
+//}
+
+.navbar-toggle {
+  display: none !important;
+
+  width: 50px;
+  height: 50px;
+  border-left: 1px solid #e7e7e7;
+  padding: 6px 11px !important;
+  background: $color-green !important;
+  .toggle-bar {
+    @include base-transition;
+    width: 24px;
+    height: 4px;
+    background: $color-white !important;
+    margin: 6px 0;
+
+    display: block;
+  }
+  &:hover,
+  &:active {
+    background: $color-green !important;
+    .toggle-bar {
+      background: $color-white !important;
+    }
+  }
+  &.collapsed {
+    background-color: $color-grey-lighten !important;
+    .toggle-bar {
+      background: $color-placeholder !important;
+    }
+  }
+}
+
+// TODO: Was originally 768px, but we change to 1100 because we dislike fluid layouts like on other sites
+@media (max-width: 1100px) {
+  .navbar-collapse {
+    overflow: hidden;
+    display: block;
+    height: 0;
+  }
+  .navbar-toggle {
+    display: block !important;
+  }
+}
+
+// Collapse additional classes
+.collapse {
+  display:none !important;
+  &.in {
+    display: block !important;
+  }
+}
+//.collapse {
+//  position: relative;
+//  height: 0;
+//  overflow: hidden;
+//  @include transition(height 0.35s ease);
+//  &.in {
+//    height: auto;
+//  }
+//}
+
+
+.collapsing {
+  height: 0;
+  overflow:hidden;
+  @include base-transition;
+}
+
+
+// Old browser message
+// ---------------------------------------------------------------------------------------------------------------------
+.browser-message {
+  background: #e86340;
+  color: #fff;
+  width: 600px;
+  margin-left: -300px;
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  text-align: center;
+  z-index: 1002;
+
+  .browser-title {
+    font-size: 24px;
+    margin: 0;
+    padding: 15px 20px;
+    border-bottom: 1px solid lighten(#e86340, 15%);
+  }
+  .browser-content {
+    padding: 15px 20px;
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
