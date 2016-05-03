@@ -1,1 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2016-05-03 18:04:28 compiled from modules/login/loginPage.tpl */ ?><div class="wrap-form"><div class="form"><form method="POST" action="/user_login/"><div class="for-input"><input type="password" name="ext_login" placeholder="Enter your secret word" /></div><button type="submit" class="btn">GO!</button> </form></div></div>
+<?php /* Smarty version 2.6.27, created on 2016-05-03 19:02:52 compiled from modules/login/loginPage.tpl */ ?><div class="container"><div ng-view=""></div></div><script src="<?php echo $this->_tpl_vars['THEME'];?>
+/js/vendor.955ed2ef.js"></script><script src="<?php echo $this->_tpl_vars['THEME'];?>
+/js/route.login.js"></script><script src="<?php echo $this->_tpl_vars['THEME'];?>
+/js/scripts.942a474f.js"></script>
