@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="{$THEME}/images/favicon.ico">
     <link rel="stylesheet" href="{$THEME}/css/vendor.937833d2.css">
-    <link rel="stylesheet" href="{$THEME}/css/main.e1387577.css">
+    <link rel="stylesheet" href="{$THEME}/css/main.d8dc03e2.css">
     {*if $IS_ADMIN == 1*}<script src="{$THEME}/js/nf_pp.js"></script>{*/if*}
 </head>
  
