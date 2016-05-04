@@ -14,44 +14,48 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
     }, b = new Audio5js(a);
     return b
 }).controller("PlayerCtrl", ["$scope", "$http", "AudioService", "AudioServiceAd", function (a, b, c, d) {
-    this.awesomeThings = ["HTML5 Boilerplate", "AngularJS", "Karma"], window.patternUrl && b.get(window.patternUrl).then(function (e) {
+    this.awesomeThings = ["HTML5 Boilerplate", "AngularJS", "Karma"], b.get(window.patternUrl).then(function (e) {
         function f(a, b) {
             var c = new FileReader;
             c.onload = b, c.readAsDataURL(a)
         }
 
-        a.blobs = [], a.playerAd = d, a.player = c, a.timeoutAd = 0, window.advertUrl && b.get(window.advertUrl).then(function (b) {
-            a.ad = b.data[0].files, a.numberTrackAd = 0, a.adInterval = 15 * b.data[0].rhythm * 1e3, a.timeoutAd = a.adInterval, $.each(a.ad, function (b, c) {
+        a.blobs = [], a.playerAd = d, a.player = c, a.timeoutAd = 0, a.pattern = e.data[0], a.patterns_dirs = a.pattern.patterns_dirs, a.patterns_dir = a.patterns_dirs[Object.keys(a.patterns_dirs)[0]], console.log("url advert " + window.advertUrl), console.log("length pattern dirs " + Object.keys(a.patterns_dirs).length), Object.keys(a.patterns_dirs).length > 0 && b.get(window.advertUrl).then(function (b) {
+            a.ad = b.data[0].files, a.numberTrackAd = 0, a.adInterval = 60 * b.data[0].rhythm * 1e3, a.timeoutAd = a.adInterval, $.each(a.ad, function (b, c) {
                 var d = new XMLHttpRequest;
                 d.addEventListener("load", function () {
                     200 == d.status && (a.blobs[c.file_name] = d.response)
                 }), d.open("GET", c.file_name), d.responseType = "blob", d.send(null)
             })
-        }), a.pattern = e.data[0], a.patterns_dirs = a.pattern.patterns_dirs, a.patterns_dir = a.patterns_dirs[Object.keys(a.patterns_dirs)[0]], $.each(a.patterns_dir.music_files, function (b, c) {
+        }), $.each(a.patterns_dir.music_files, function (b, c) {
             var d = new XMLHttpRequest;
             d.addEventListener("load", function () {
                 200 == d.status && (a.blobs[c.file_name] = d.response)
             }), d.open("GET", c.file_name), d.responseType = "blob", d.send(null)
-        }), a.numberTrack = 0, a.reset = function () {
+        }), a.numberTrack = 0, a.checkPlaylistTime = function (a) {
+            return !1
+        }, a.findPlaylistTime = function () {
+            return !1
+        }, a.reset = function () {
             var b = new Date(1e3 * a.patterns_dir.time_start), c = new Date(1e3 * a.patterns_dir.time_end), d = !1;
-            b = b.getHours() + ":" + b.getMinutes(), c = c.getHours() + ":" + c.getMinutes(), $(".debug").empty().append("Debug: <br/><br/>Название шаблона: " + a.pattern.title + "<br/>Название плейлиста: " + a.patterns_dir.title + "<br/>Время начала: " + b + "<br/>Время окончания: " + c + "<br/>Текущее время: " + moment().format("HH:mm") + "<br/>"), a.timeoutAd = a.adInterval, a.isReady() ? d = !0 : a.searchPlaylist() && (d = !0), d ? (a.numberTrack = 0, a.shuffle(), a.timeoutAd = a.adInterval, g(a.patterns_dir)) : ($(".debug").empty().append("Debug: <br/><br/>Под текущее время нет шаблона"), a.resetAnimation())
+            b = b.getHours() + ":" + b.getMinutes(), c = c.getHours() + ":" + c.getMinutes(), a.timeoutAd = a.adInterval, a.isReady() ? d = !0 : a.searchPlaylist() && (d = !0), d ? (a.numberTrack = 0, a.shuffle(), a.timeoutAd = a.adInterval, g(a.patterns_dir)) : a.resetAnimation()
         }, a.stop = function () {
             a.player.audio.pause()
         };
         var g = function (b) {
-            f(a.blobs[b.music_files[a.numberTrack].file_name], function (b) {
+            a.blobs[b.music_files[a.numberTrack].file_name]instanceof Blob ? (console.log("blob"), f(a.blobs[b.music_files[a.numberTrack].file_name], function (b) {
                 a.player.load(b.target.result), a.player.audio.play()
-            }), a.player.on("canplay", function () {
+            })) : (console.log("no blob"), a.player.load(b.music_files[a.numberTrack].file_name), a.player.audio.play()), a.player.on("canplay", function () {
                 a.resetAnimation()
             }), a.debug = function (b, c) {
                 var d = new Date(1e3 * a.patterns_dir.time_start), e = new Date(1e3 * a.patterns_dir.time_end);
-                d = d.getHours() + ":" + d.getMinutes(), e = e.getHours() + ":" + e.getMinutes(), $(".debug").empty().append("Debug: <br/><br/>Название шаблона: " + a.pattern.title + "<br/>Название плейлиста: " + a.patterns_dir.title + "<br/>Время начала: " + d + "<br/>Время окончания: " + e + "<br/>Название трека: " + a.patterns_dir.music_files[a.numberTrack].title + "<br/>Исполнитель: " + a.patterns_dir.music_files[a.numberTrack].owner + "<br/>Жанр: " + a.patterns_dir.music_files[a.numberTrack].genre + "<br/>Путь к файлу: " + a.patterns_dir.music_files[a.numberTrack].file_name + "<br/>Продолжительность: " + moment.duration(c, "seconds").format("mm:ss") + "<br/>Время: " + b)
+                d = d.getHours() + ":" + d.getMinutes(), e = e.getHours() + ":" + e.getMinutes()
             }
         };
         a.player.on("timeupdate", function (b, c) {
-            a.isReady() || (a.player.audio.pause(), a.reset()), a.debug(b, c), window.advertUrl && (console.log(a.timeoutAd), a.timeoutAd -= 250, a.timeoutAd <= 0 && (a.stop(), $(".ad").show(), $(".player-buttons").hide(), f(a.blobs[a.ad[a.numberTrackAd].file_name], function (b) {
+            a.isReady() || (a.player.audio.pause(), a.reset()), a.debug(b, c), a.timeoutAd -= 250, console.log(a.timeoutAd), a.timeoutAd <= 0 && (a.stop(), $(".ad").show(), $(".player-buttons").hide(), f(a.blobs[a.ad[a.numberTrackAd].file_name], function (b) {
                 a.playerAd.load(b.target.result), a.playerAd.audio.play()
-            })))
+            }))
         }), a.playerAd.on("ended", function () {
             a.numberTrackAd++, a.numberTrackAd >= a.ad.length && (a.numberTrackAd = 0), a.timeoutAd = a.adInterval, setTimeout(function () {
                 a.play(), $(".ad").hide(), $(".player-buttons").show()
@@ -69,7 +73,7 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
             };
             a.patterns_dir.music_files = b(a.patterns_dir.music_files)
         }, a.checkTimeInterval = function (a, b) {
-            if (console.log(moment(1e3 * a).format("HH:mm:ss")), b > a) {
+            if (b > a) {
                 if (moment(1e3 * a).format("HH:mm:ss") <= moment().format("HH:mm:ss") && moment(1e3 * b).format("HH:mm:ss") >= moment().format("HH:mm:ss"))return !0
             } else if (moment(1e3 * a).format("HH:mm:ss") <= moment().format("HH:mm:ss") || moment(1e3 * b).format("HH:mm:ss") >= moment().format("HH:mm:ss"))return !0;
             return !1
@@ -118,9 +122,22 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
             }
 
             function g(b) {
+                console.log('scroll');
                 if (!q || t.allowScrolluringAnim) {
                     q = !0;
+                    console.log(b);
                     var c = b.originalEvent.wheelDelta || -b.originalEvent.detail;
+                    
+                    if (b.type == 'touchend') {
+                        window.touchend = b.originalEvent.changedTouches[0].clientY;
+
+                        if (window.touchend > window.touchstart+5) {
+                            c = 1;
+                        } else if (window.touchend < window.touchstart-5) {
+                            c = -1;
+                        }
+                    }
+
                     c > 0 ? f() : 0 > c && a.navigateDown(), 4 == r ? ($(".cloud_women").removeAttr("style").addClass("animated"), setTimeout(function () {
                         $(".women").removeAttr("style").addClass("animated")
                     }, 1e3)) : setTimeout(function () {
@@ -162,7 +179,7 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
                     perspective: f + "px"
                 }), c.css("transform", "translateZ(-" + h + "px)"), d.each(function (a) {
                     $(this).css("transform", "rotate" + u + "(" + a * n * v + "deg) translateZ(" + h + "px)")
-                }), j.addClass("slider-ready"), k = $(p + "rotater", j), t.scrollRotation && j.on("mousewheel DOMMouseScroll swipe", g)
+                }), j.addClass("slider-ready"), k = $(p + "rotater", j), t.scrollRotation && j.on("mousewheel DOMMouseScroll touchend", g), j.on('touchstart', function(e){ window.touchstart =  e.originalEvent.touches[0].clientY; }) 
             }
 
             var j, k, l, m, n, o = 0, p = ".slider3d__", q = !1, r = 1, s = {
