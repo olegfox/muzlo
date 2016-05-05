@@ -122,9 +122,22 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
             }
 
             function g(b) {
+                console.log('scroll');
                 if (!q || t.allowScrolluringAnim) {
                     q = !0;
+                    console.log(b);
                     var c = b.originalEvent.wheelDelta || -b.originalEvent.detail;
+                    
+                    if (b.type == 'touchend') {
+                        window.touchend = b.originalEvent.changedTouches[0].clientY;
+
+                        if (window.touchend > window.touchstart+5) {
+                            c = 1;
+                        } else if (window.touchend < window.touchstart-5) {
+                            c = -1;
+                        }
+                    }
+
                     c > 0 ? f() : 0 > c && a.navigateDown(), 4 == r ? ($(".cloud_women").removeAttr("style").addClass("animated"), setTimeout(function () {
                         $(".women").removeAttr("style").addClass("animated")
                     }, 1e3)) : setTimeout(function () {
@@ -166,7 +179,9 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
                     perspective: f + "px"
                 }), c.css("transform", "translateZ(-" + h + "px)"), d.each(function (a) {
                     $(this).css("transform", "rotate" + u + "(" + a * n * v + "deg) translateZ(" + h + "px)")
-                }), j.addClass("slider-ready"), k = $(p + "rotater", j), t.scrollRotation && j.on("mousewheel DOMMouseScroll touchmove", g)
+
+                }), j.addClass("slider-ready"), k = $(p + "rotater", j), t.scrollRotation && j.on("mousewheel DOMMouseScroll touchend", g), j.on('touchstart', function(e){ window.touchstart =  e.originalEvent.touches[0].clientY; }) 
+
             }
 
             var j, k, l, m, n, o = 0, p = ".slider3d__", q = !1, r = 1, s = {
