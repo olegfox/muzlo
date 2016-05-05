@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2016-05-04 05:58:47 compiled from main.tpl */ ?>
+<?php /* Smarty version 2.6.27, created on 2016-05-05 06:44:03 compiled from main.tpl */ ?>
 <?php if ($this->_tpl_vars['IS_AJAX'] == 0): ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => '_header.tpl', 'smarty_include_vars' => array()));
