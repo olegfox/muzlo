@@ -166,7 +166,7 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
                     perspective: f + "px"
                 }), c.css("transform", "translateZ(-" + h + "px)"), d.each(function (a) {
                     $(this).css("transform", "rotate" + u + "(" + a * n * v + "deg) translateZ(" + h + "px)")
-                }), j.addClass("slider-ready"), k = $(p + "rotater", j), t.scrollRotation && j.on("mousewheel DOMMouseScroll swipe", g)
+                }), j.addClass("slider-ready"), k = $(p + "rotater", j), t.scrollRotation && j.on("mousewheel DOMMouseScroll touchmove", g)
             }
 
             var j, k, l, m, n, o = 0, p = ".slider3d__", q = !1, r = 1, s = {
