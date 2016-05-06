@@ -258,7 +258,7 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
         })
     }), $(".hint-right").each(function (a, b) {
         $(b).click(function (a) {
-            console.log($(b).data("current-level")), a.preventDefault(), $("html, body").animate({scrollTop: $("." + $(b).data("current-level")).offset().top}, 1e3)
+            console.log($(b).data("current-level")), a.preventDefault(); for(var i = 0; i < 5; i++) {rotatingSlider.navigateDown()};
         })
     });
     var e = new WOW({boxClass: "wow", animateClass: "animated", offset: 0, mobile: !0, live: !0});
