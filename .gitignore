@@ -8,3 +8,4 @@ local
 application/config/config.php
 application/config/database.php
 application/template_c
+apolication/admin/template_c

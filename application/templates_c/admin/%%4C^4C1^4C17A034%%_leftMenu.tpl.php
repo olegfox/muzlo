@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2016-05-03 19:55:23 compiled from _leftMenu.tpl */ ?>
+<?php /* Smarty version 2.6.27, created on 2016-05-06 05:24:36 compiled from _leftMenu.tpl */ ?>
 <?php if ($this->_tpl_vars['IS_ADMIN'] == 1): ?><h1 style="text-align:center;"><a href="/admin/">Админка</a></h1><div class="sidebar"><ul class="menu"> <li><div><a href="/admin/users/edit/<?php echo $this->_tpl_vars['LOGIN']->id; ?>
 /"><img src="<?php echo $this->_tpl_vars['THEME']; ?>
 /img/lg.png" /></a> <span><a href="/admin/users/edit/<?php echo $this->_tpl_vars['LOGIN']->id; ?>
