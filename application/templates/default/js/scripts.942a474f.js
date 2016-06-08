@@ -113,18 +113,41 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
                     transform: "rotate" + u + "(" + b * v * -1 + "deg)",
                     transition: "transform " + t.speed / 1e3 + "s " + t.easing
                 }), o = b, setTimeout(function () {
-                    k.css("transition", "transform 0s"), d(), q = !1
+                    console.log('rotateSlider');
+                    k.css("transition", "transform 0s"), d(), q = !1;
                 }, t.speed)
             }
 
             function f() {
-                r > 1 ? (e(-1), $(".up").css("transform", "translateY(0%)"), r--, h()) : q = !1
+                console.log('navigateUp' + q);
+
+                r > 1 ? (e(-1), $(".up").css("transform", "translateY(0%)"), r--, h()) : q = !1;
+
+                if (!q) {
+                 console.log('r r= ' + r);   
+                 4 == r || 1 == r ? ($(".cloud_women").removeAttr("style").addClass("animated"), setTimeout(function(){
+                        $(".women").removeAttr("style").addClass("animated")
+                    }, 1e3), q = 0) : ( setTimeout(function () {
+                        $(".cloud_women").css({
+                            visibility: "hidden",
+                            "animation-name": "none"
+                        }).removeClass("animated"),
+                        $(".women").css({
+                            visibility: "hidden",
+                            "animation-name": "none"
+                        }).removeClass("animated").css({visibility: "hidden", "animation-name": "none"})}, 1e3))
+                }; 
             }
 
             function g(b) {
-                console.log('scroll');
-                if (!q || t.allowScrolluringAnim) {
+                //alert('scroll');
+
+                if (!q) {
+                                    console.log('scroll'); 
                     q = !0;
+                    
+                    setTimeout(function(){q=0;}, t.speed);
+
                     console.log(b);
                     var c = b.originalEvent.wheelDelta || -b.originalEvent.detail;
                     
@@ -138,21 +161,21 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
                         }
                     }
 
-                    c > 0 ? f() : 0 > c && a.navigateDown(), 4 == r ? ($(".cloud_women").removeAttr("style").addClass("animated"), setTimeout(function () {
-                        $(".women").removeAttr("style").addClass("animated")
-                    }, 1e3)) : setTimeout(function () {
-                        $(".cloud_women").css({
-                            visibility: "hidden",
-                            "animation-name": "none"
-                        }).removeClass("animated"), $(".women").css({
-                            visibility: "hidden",
-                            "animation-name": "none"
-                        }).removeClass("animated")
-                    }, 1e3)
+                    c > 0 ? f() : 0 > c && a.navigateDown();
                 }
             }
 
             function h() {
+
+                setTimeout(function(){
+                    $(".text-block").css({
+                        visibility: "hidden",
+                        "animation-name": "none"
+                     }).removeClass("animated fadeInDown"); 
+                }, t.speed);      
+
+                console.log('r = ' + r);
+
                 switch (r) {
                     case 1:
                         $(".r4").addClass("up"), $(".r2").addClass("down"), $(".r1").removeClass("up"), $(".r3").removeClass("down"), $(".r3").removeClass("up"), $(".r1").removeClass("down");
@@ -164,9 +187,20 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
                         $(".r2").addClass("up"), $(".r4").addClass("down"), $(".r1").removeClass("up"), $(".r3").removeClass("down"), $(".r3").removeClass("up"), $(".r1").removeClass("down");
                         break;
                     case 5:
-                        $(".r3").addClass("up"), $(".r1").addClass("down"), $(".r2").removeClass("up"), $(".r4").removeClass("down"), $(".r4").removeClass("up"), $(".r2").removeClass("down")
+                        $(".r3").addClass("up"), $(".r1").addClass("down"), $(".r2").removeClass("up"), $(".r4").removeClass("down"), $(".r4").removeClass("up"), $(".r2").removeClass("down");
+                        break;
+                    case 6:
+                        setTimeout(function(){
+
+                            $(".text-block").removeAttr('style').addClass('fadeInDown animated'); 
+
+                        }, t.speed);
+                        
+                        break;      
                 }
-                $(".up").css("transform", "translateY(-60%)"), $(".down").css("transform", "translateY(60%)")
+
+                $(".up").css("transform", "translateY(-150%)"), $(".down").css("transform", "translateY(150%)") 
+                   
             }
 
             function i(a) {
@@ -184,7 +218,7 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
 
             }
 
-            var j, k, l, m, n, o = 0, p = ".slider3d__", q = !1, r = 1, s = {
+            var j, k, l, m, n, o = 0, p = ".slider3d__", q = 0, r = 1, s = {
                 xRotation: !1,
                 speed: 1100,
                 dragSpeedCoef: .7,
@@ -203,7 +237,23 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
                 allowControlsDuringAnim: !1
             }, t = $.extend(s, c), u = t.xRotation ? "Y" : "X", v = t.xRotation ? 1 : -1;
             a.navigateDown = function () {
-                6 != r ? (e(1), $(".down").css("transform", "translateY(0%)"), r++, h()) : q = !1
+                console.log('rotate = ' + r);
+
+                if (!q) {
+                 3 == r ? ($(".cloud_women").removeAttr("style").addClass("animated"), setTimeout(function(){
+                        $(".women").removeAttr("style").addClass("animated")
+                    }, 1e3)) : ( setTimeout(function () {
+                        $(".cloud_women").css({
+                            visibility: "hidden",
+                            "animation-name": "none"
+                        }).removeClass("animated"),
+                        $(".women").css({
+                            visibility: "hidden",
+                            "animation-name": "none"
+                        }).removeClass("animated").css({visibility: "hidden", "animation-name": "none"})}, 1e3))
+                };
+
+                6 != r && !q ? (e(1), $(".down").css("transform", "translateY(0%)"), r++, h()) : q=!1
             }, i(b)
         }
 
@@ -215,6 +265,7 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
 
         function f(a, b, c) {
             var d;
+            
             return function () {
                 var e = this, f = arguments, g = function () {
                     d = null, c || a.apply(e, f)
@@ -253,12 +304,12 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
             resizing: !0
         })
     }), $(".arrow").each(function (a, b) {
-        $(b).click(function (a) {
+        $(b).bind('click touchstart', function (a) {
             a.preventDefault(), rotatingSlider.navigateDown()
         })
     }), $(".hint-right").each(function (a, b) {
         $(b).click(function (a) {
-            console.log($(b).data("current-level")), a.preventDefault(); for(var i = 0; i < 5; i++) {rotatingSlider.navigateDown()};
+            console.log($(b).data("current-level")), a.preventDefault(); for(var i = 0; i < 6; i++) {rotatingSlider.navigateDown()};
         })
     });
     var e = new WOW({boxClass: "wow", animateClass: "animated", offset: 0, mobile: !0, live: !0});
@@ -274,5 +325,5 @@ angular.module("muzloTemplateApp").factory("AudioService", function () {
         }, 1e3))
     })
 }]), angular.module("muzloTemplateApp").run(["$templateCache", function (a) {
-    a.put("views/login.html", '<div class="slider3d first"> <div class="slider3d__wrapper"> <div class="slider3d__inner"> <div class="slider3d__rotater"> <div class="slider3d__item level69" data-video="/video/web_one.mp4" data-mob-video="/video/web_one_mob.mp4"> <div class="content-wrapp"> <div class="rot r1"> <div class="wrap-center-block"> <div class="center-block"> <h2 class="slider3d__heading">YOUR ARTIFICIAL CLOUD</h2> </div> </div> </div> </div> <div class="hint-right" data-current-level="level80"> CUSTOMERS </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item slider3d__item--dark"> <div class="content-wrapp"> <div class="rot r2 down"> <div class="wrap-center-block"> <div class="center-block"> <h2 class="slider3d__heading dark">WHAT IS THE SOUND OF YOUR SUCCESS?</h2> </div> </div> </div> </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink arrow--dark"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item" data-video="/video/web_two.mp4" data-mob-video="/video/web_two_mob.mp4"> <div class="content-wrapp"> <div class="rot r3"> <h2 class="slider3d__heading">HOW TO RULE THIS CROWD?</h2> </div> </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item level74"> <div class="wrap-center-block"> <div class="center-block"> <div class="cloud_women wow slideInUp"></div> <div class="women wow slideInUp" data-wow-delay="1s"></div> </div> </div><a href="#" class="arrow arrow-blink" ></a> </div> <div class="slider3d__item" class="level76" data-video="/video/BG.mp4"> <div class="content-wrapp"> <div class="rot r4"> <h2 class="slider3d__heading">WHAT IF MUSIC CAN HELP?</h2> </div> </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item"> <div class="wrap-line level-block level79"> <div class="shadow"></div> <div class="line"> <!-- Center Block --> <div class="wrap-center-block"> <div class="center-block"> <div class="text-block wow fadeIn"> <p style="text-align: center"><span style="color:rgb(0, 0, 0); font-size:24px">Fully customized online sound design for your shopping centre, hotel, spa, restaurant or any other public spaces.</span><br> <span style="color:rgb(255, 255, 255); font-size:24px">Beautiful soundwaves from hour to hour with your voice announcements on demand.</span> </p> </div> </div> </div> <!-- end Center Block --> </div> </div> <div class="wrap-form level80"> <div class="wrap-center-block"> <div class="center-block"> <div class="form"> <form method="POST" action="/user_login/"> <div class="for-input wow bounceInUp"> <input type="password" name="ext_login" placeholder="Please enter your code"> </div> <button type="submit" class="btn wow bounceInUp" data-wow-delay="0.5s">GO!</button> </form> </div> </div> </div> </div> </div> </div> </div> </div> </div> <!--&lt;!&ndash; Block1 &ndash;&gt;--> <!--<div class="wrap-header level-block level69" data-video="/video/web_one.mp4">--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right" data-current-level="level80">--> <!--CUSTOMERS--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>YOUR ARTIFICIAL CLOUD</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--&lt;!&ndash; Arrow Down &ndash;&gt;--> <!--<a href="#" class="arrow arrow-blink" data-current-level="level69"></a>--> <!--&lt;!&ndash; end Arrow Down &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block1 &ndash;&gt;--> <!--&lt;!&ndash; Block2 &ndash;&gt;--> <!--<div class="wrap-header level-block level71" >--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>WHAT IS THE SOUND OF YOUR SUCCESS?</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block2 &ndash;&gt;--> <!--&lt;!&ndash; Block3 &ndash;&gt;--> <!--<div class="wrap-header level-block level72" data-video="/video/web_two.mp4">--> <!--<div class="shadow"></div>/--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>HOW TO RULE THIS CROWD?</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block3 &ndash;&gt;--> <!--&lt;!&ndash; Block4 &ndash;&gt;--> <!--<div class="wrap-header level-block level74" >--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1></h1>--> <!--<h2></h2>--> <!--</div>--> <!--<div class="cloud_women wow slideInUp"></div>--> <!--<div class="women wow slideInUp" data-wow-delay="1s"></div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block4 &ndash;&gt;--> <!--&lt;!&ndash; Block5 &ndash;&gt;--> <!--<div class="wrap-header level-block level76" data-video="/video/BG.mp4">--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>WHAT IF MUSIC CAN HELP?</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block5 &ndash;&gt;--> <!--&lt;!&ndash; Block6 &ndash;&gt;--> <!--<div class="wrap-line level-block level79">--> <!--<div class="shadow"></div>--> <!--<div class="line">--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<div class="text-block wow fadeIn">--> <!--<p style="text-align: center;"><span style="color:rgb(255, 255, 255); font-size:24px">Fully customized online sound design for your shopping centre, hotel, spa, restaurant or any other public spaces.</span><br />--> <!--<span style="color:rgb(255, 255, 255); font-size:24px">Beautiful soundwaves from hour to hour with your voice announcements on demand.</span></p>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block6 &ndash;&gt;--> <!--&lt;!&ndash; Block7 &ndash;&gt;--> <!--<div class="wrap-form level80">--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<div class="form">--> <!--<form action="">--> <!--<div class="for-input wow bounceInUp">--> <!--<input type="password" placeholder="Please enter your code" />--> <!--</div>--> <!--<button type="submit" class="btn wow bounceInUp" data-wow-delay="0.5s">GO!</button>--> <!--</form>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block7 &ndash;&gt;-->'),a.put("views/main.html",'<!-- Video web_one --> <div class="wrap-block"> <div class="block block-1"> </div> </div> <!-- end Video web_one --> <!-- Text what is the sound of your success --> <div class="wrap-block"> <div class="block block-2"> what is the sound of your success? </div> </div> <!-- end Text what is the sound of your success --> <!-- Video web_two --> <div class="wrap-block"> <div class="block block-3"> </div> </div> <!-- end Video web_two --> <!-- Image baba --> <div class="wrap-block"> <div class="block block-4"> </div> </div> <!-- end Image baba --> <!-- Text What if music can help? --> <div class="wrap-block"> <div class="block block-5"> What if music can help? </div> </div> <!-- end Text What if music can help? --> <!-- Video BG--> <div class="wrap-block"> <div class="block block-6"> </div> </div> <!-- end Video BG --> <!-- Text big --> <div class="wrap-block"> <div class="block block-7"> Fully customized online sound design for your shopping centre, hotel, spa, restaurant or any other public spaces. Beautiful soundwaves from hour to hour with your voice announcements on demand. </div> </div> <!-- end Text big --> <!-- Log --> <div class="wrap-block"> <div class="wrap-form"><div class="form"><form method="POST" action="/user_login/" class="ng-pristine ng-valid"><div class="for-input"><input type="password" name="ext_login" placeholder="Enter your secret word"></div><button type="submit" class="btn">GO!</button> </form></div></div></div> <!-- end Log -->'),a.put("views/player.html",'<div class="debug"> </div> <div class="wrap-player"> <div class="player"> <div class="ad"> <div class="table"> <div class="table-cell"> <p>Реклама</p> </div> </div> </div> <div class="player-buttons"> <ul> <li class="btn-play" ng-click="play()"> <div class="wrap"> <span class="bg"></span> <span>PLAY</span> </div> </li> <li class="btn-stop" ng-click="stop()"> <div class="wrap"> <span class="bg"></span> <span>STOP</span> </div> </li> <li class="btn-reset" ng-click="reset()"> <div class="wrap"> <span class="bg"></span> <span>RESET</span> </div> </li> </ul> </div> </div> </div>')
+    a.put("views/login.html", '<div class="slider3d first"> <div class="slider3d__wrapper"> <div class="slider3d__inner"> <div class="slider3d__rotater"> <div class="slider3d__item level69" data-video="/video/web_one.mp4" data-mob-video="/video/web_one_mob.mp4"> <div class="content-wrapp"> <div class="rot r1"> <div class="wrap-center-block"> <div class="center-block"> <h2 class="slider3d__heading">YOUR ARTIFICIAL CLOUD</h2> </div> </div> </div> </div> <div class="hint-right" data-current-level="level80"> CUSTOMERS </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item slider3d__item--dark"> <div class="content-wrapp"> <div class="rot r2 down"> <div class="wrap-center-block"> <div class="center-block"> <h2 class="slider3d__heading dark">WHAT IS THE SOUND OF YOUR SUCCESS?</h2> </div> </div> </div> </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink arrow--dark"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item" data-video="/video/web_two.mp4" data-mob-video="/video/web_two_mob.mp4"> <div class="content-wrapp"> <div class="rot r3"> <h2 class="slider3d__heading">HOW TO RULE THIS CROWD?</h2> </div> </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item level74"> <div class="wrap-center-block"> <div class="center-block"> <div class="cloud_women wow slideInUp"></div> <div class="women wow slideInUp" data-wow-delay="1s"></div> </div> </div><a href="#" class="arrow arrow-blink" ></a> </div> <div class="slider3d__item" class="level76" data-video="/video/BG.mp4"> <div class="content-wrapp"> <div class="rot r4"> <h2 class="slider3d__heading">WHAT IF MUSIC CAN HELP?</h2> </div> </div> <!-- Arrow Down --> <a href="#" class="arrow arrow-blink"></a> <!-- end Arrow Down --> </div> <div class="slider3d__item"> <div class="wrap-line level-block level79"> <div class="shadow"></div> <div class="line"> <!-- Center Block --> <div class="wrap-center-block"> <div class="center-block"> <div class="text-block wow fadeIn"> <p style="text-align: center"><span style="color:rgb(0, 0, 0); font-size:24px">Fully customized online sound design for your shopping centre, hotel, spa, restaurant or any other public spaces.</span><br> <span style="color:rgb(0, 0, 0); font-size:24px">Beautiful soundwaves from hour to hour with your voice announcements on demand.</span> </p> </div> </div> </div> <!-- end Center Block --> </div> </div> <div class="wrap-form level80"> <div class="wrap-center-block"> <div class="center-block"> <div class="form"> <form method="POST" action="/user_login/"> <div class="for-input wow bounceInUp"> <input type="password" name="ext_login" placeholder="Please enter your code"> </div> <button type="submit" class="btn wow bounceInUp" data-wow-delay="0.5s">GO!</button> </form> </div> </div> </div> </div> </div> </div> </div> </div> </div> <!--&lt;!&ndash; Block1 &ndash;&gt;--> <!--<div class="wrap-header level-block level69" data-video="/video/web_one.mp4">--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right" data-current-level="level80">--> <!--CUSTOMERS--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>YOUR ARTIFICIAL CLOUD</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--&lt;!&ndash; Arrow Down &ndash;&gt;--> <!--<a href="#" class="arrow arrow-blink" data-current-level="level69"></a>--> <!--&lt;!&ndash; end Arrow Down &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block1 &ndash;&gt;--> <!--&lt;!&ndash; Block2 &ndash;&gt;--> <!--<div class="wrap-header level-block level71" >--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>WHAT IS THE SOUND OF YOUR SUCCESS?</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block2 &ndash;&gt;--> <!--&lt;!&ndash; Block3 &ndash;&gt;--> <!--<div class="wrap-header level-block level72" data-video="/video/web_two.mp4">--> <!--<div class="shadow"></div>/--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>HOW TO RULE THIS CROWD?</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block3 &ndash;&gt;--> <!--&lt;!&ndash; Block4 &ndash;&gt;--> <!--<div class="wrap-header level-block level74" >--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1></h1>--> <!--<h2></h2>--> <!--</div>--> <!--<div class="cloud_women wow slideInUp"></div>--> <!--<div class="women wow slideInUp" data-wow-delay="1s"></div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block4 &ndash;&gt;--> <!--&lt;!&ndash; Block5 &ndash;&gt;--> <!--<div class="wrap-header level-block level76" data-video="/video/BG.mp4">--> <!--<div class="shadow"></div>--> <!--<div class="header">--> <!--&lt;!&ndash; Top &ndash;&gt;--> <!--<div class="top">--> <!--<div class="hint-left">--> <!--<div class="table">--> <!--<div class="table-cell">--> <!--<div class="text">--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--<div class="hint-right hint-right-none">--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Top &ndash;&gt;--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<h1>WHAT IF MUSIC CAN HELP?</h1>--> <!--<h2></h2>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block5 &ndash;&gt;--> <!--&lt;!&ndash; Block6 &ndash;&gt;--> <!--<div class="wrap-line level-block level79">--> <!--<div class="shadow"></div>--> <!--<div class="line">--> <!--&lt;!&ndash; Center Block &ndash;&gt;--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<div class="text-block wow fadeIn">--> <!--<p style="text-align: center;"><span style="color:rgb(255, 255, 255); font-size:24px">Fully customized online sound design for your shopping centre, hotel, spa, restaurant or any other public spaces.</span><br />--> <!--<span style="color:rgb(255, 255, 255); font-size:24px">Beautiful soundwaves from hour to hour with your voice announcements on demand.</span></p>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Center Block &ndash;&gt;--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block6 &ndash;&gt;--> <!--&lt;!&ndash; Block7 &ndash;&gt;--> <!--<div class="wrap-form level80">--> <!--<div class="wrap-center-block">--> <!--<div class="center-block">--> <!--<div class="form">--> <!--<form action="">--> <!--<div class="for-input wow bounceInUp">--> <!--<input type="password" placeholder="Please enter your code" />--> <!--</div>--> <!--<button type="submit" class="btn wow bounceInUp" data-wow-delay="0.5s">GO!</button>--> <!--</form>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--</div>--> <!--&lt;!&ndash; end Block7 &ndash;&gt;-->'),a.put("views/main.html",'<!-- Video web_one --> <div class="wrap-block"> <div class="block block-1"> </div> </div> <!-- end Video web_one --> <!-- Text what is the sound of your success --> <div class="wrap-block"> <div class="block block-2"> what is the sound of your success? </div> </div> <!-- end Text what is the sound of your success --> <!-- Video web_two --> <div class="wrap-block"> <div class="block block-3"> </div> </div> <!-- end Video web_two --> <!-- Image baba --> <div class="wrap-block"> <div class="block block-4"> </div> </div> <!-- end Image baba --> <!-- Text What if music can help? --> <div class="wrap-block"> <div class="block block-5"> What if music can help? </div> </div> <!-- end Text What if music can help? --> <!-- Video BG--> <div class="wrap-block"> <div class="block block-6"> </div> </div> <!-- end Video BG --> <!-- Text big --> <div class="wrap-block"> <div class="block block-7"> Fully customized online sound design for your shopping centre, hotel, spa, restaurant or any other public spaces. Beautiful soundwaves from hour to hour with your voice announcements on demand. </div> </div> <!-- end Text big --> <!-- Log --> <div class="wrap-block"> <div class="wrap-form"><div class="form"><form method="POST" action="/user_login/" class="ng-pristine ng-valid"><div class="for-input"><input type="password" name="ext_login" placeholder="Enter your secret word"></div><button type="submit" class="btn">GO!</button> </form></div></div></div> <!-- end Log -->'),a.put("views/player.html",'<div class="debug"> </div> <div class="wrap-player"> <div class="player"> <div class="ad"> <div class="table"> <div class="table-cell"> <p>Реклама</p> </div> </div> </div> <div class="player-buttons"> <ul> <li class="btn-play" ng-click="play()"> <div class="wrap"> <span class="bg"></span> <span>PLAY</span> </div> </li> <li class="btn-stop" ng-click="stop()"> <div class="wrap"> <span class="bg"></span> <span>STOP</span> </div> </li> <li class="btn-reset" ng-click="reset()"> <div class="wrap"> <span class="bg"></span> <span>RESET</span> </div> </li> </ul> </div> </div> </div>')
 }]);

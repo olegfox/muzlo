@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2016-02-17 23:37:49 compiled from modules/admin_patterns/admin_patternsAdd.tpl */ ?>
+<?php /* Smarty version 2.6.27, created on 2016-06-06 20:37:06 compiled from modules/admin_patterns/admin_patternsAdd.tpl */ ?>
 <?php if (! empty ( $this->_tpl_vars['obj']['msg'] )): ?> <?php if ($this->_tpl_vars['obj']['msg'] == 'err'): ?><div class="alert alert-error">Произошла ошибка при добавлении шаблона. Возможно, заполнены не все обязательные поля!</div><?php else: ?><div class="alert alert-success">Шаблон успешно добавлен!<br/>Вы можете перейти к редактированию <a href="/admin/patterns/edit/<?php echo $this->_tpl_vars['obj']['lastID']; ?>
 /">шаблона</a></div><?php endif; ?> <?php else: ?> <form class="form-horizontal" method="POST" enctype="multipart/form-data" action=""><div class="control-group"><label class="control-label">Название шаблона*</label><div class="controls"><input type="text" name="title" value="" placeholder="Введите название шаблона"></div></div><div class="control-group"><div class="controls"><input class="btn" type="submit" value="Добавить шаблона" /></div></div></form>
 <?php endif; ?>

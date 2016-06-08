@@ -16,7 +16,7 @@
 
 						<li>
 							<div>
-								<a href="#"><img src="{$THEME}/img/ic1.png"></a>
+								<a href="/admin/settings/"><img src="{$THEME}/img/ic1.png"></a>
 								<span><a href="/admin/settings/">Настройки сайта</a></span>
 								<p>Различные настройки сайта</p>
 							</div>
@@ -25,7 +25,7 @@
 
 						<li>
 							<div>
-								<a href="#"><img src="{$THEME}/img/ic1.png"></a>
+								<a href="/admin/patterns/"><img src="{$THEME}/img/ic1.png"></a>
 								<span><a href="/admin/patterns/">Шаблоны</a></span>
 								<p>Список шаблонов</p>
 							</div>
@@ -33,7 +33,7 @@
 
 						<li>
 							<div>
-								<a href="#"><img src="{$THEME}/img/ic1.png"></a>
+								<a href="/admin/patterns_dirs/"><img src="{$THEME}/img/ic1.png"></a>
 								<span><a href="/admin/patterns_dirs/">Директории шаблонов</a></span>
 								<p>Список директорий шаблонов</p>
 							</div>
@@ -41,7 +41,7 @@
 
 						<li>
 							<div>
-								<a href="#"><img src="{$THEME}/img/ic2.png"></a>
+								<a href="/admin/music_files/"><img src="{$THEME}/img/ic2.png"></a>
 								<span><a href="/admin/music_files/">Музыкальные файлы</a></span>
 								<p>Список музыкальных файлов</p>
 							</div>
@@ -49,7 +49,7 @@
 
 						<li>
 							<div>
-								<a href="#"><img src="{$THEME}/img/ic1.png"></a>
+								<a href="/admin/adverts/"><img src="{$THEME}/img/ic1.png"></a>
 								<span><a href="/admin/adverts/">Рекламные файлы</a></span>
 								<p>Список рекламных файлов</p>
 							</div>
